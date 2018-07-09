@@ -20,8 +20,8 @@ Para começar a incluir o código do Arduino em um documento `LATEX` simplesment
 ```
 
 # Exemplo do comando `\ArduinoSketch` de um código grande
-A sintaxe de uso do comando `\ArduinoSketch` é muito simples, pois o comando usa dois parâmetros de entrada bftt `file.ino` que não devem ter a extensão .ino e Label para o código correspondente à caption do contador `Listing`.
+A sintaxe de uso do comando `\ArduinoSketch` é muito simples, pois o comando usa dois parâmetros de entrada `arquivo.ino` que não devem ter a extensão .ino e Label para o código correspondente à caption do contador `Listing`.
 
 ```
-\ArduinoSketch{arquivo.ino}{título}
+\ArduinoSketch{arquivo.ino}{Legenda}
 ```
