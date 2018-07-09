@@ -7,27 +7,21 @@ O arquivo `arduino_code.tex` contém a definição do comando `\ArduinoSketch` e
 O realce de sintaxe usado no arquivo `arduino_code.tex` pode ser visto em:
 https://www.arduino.cc/en/Reference/HomePage.
 
+# Modo de exemplo de arquivo `arduino_code.tex`
+Para começar a incluir o código do Arduino em um documento `LATEX` simplesmente copie o arquivo `arduino_code.tex` para o diretório raiz do seu documento e use o comando `\input` no preâmbulo
 ```
-|_examples (how to use each data structure and algorithm, organized by chapter)
-|_src 
-|___js (source code: JavaScript version)
-|_____data-structures
-|_______models (classes used by DS: Node, ValuePair, ...)
-|_____others (other algorithms such as palindome checker, hanoi tower)
-|___ts (source code: TypeScript version)
-|_____data-structures
-|_______models
-|_____others
-|_test (unit tests with Mocha and Chai for src)
-|___js (tests for JavaScript code)
-|___ts (tests for TypeScript code)
+\input{Arduino_code.tex}
+```
+# Modo de uso do ambiente `ArduinoSketchBox`
+```
+\begin{ArduinoSketchBox}{title}
+  Código...
+\end{ArduinoSketchBox}
 ```
 
-> Gabriel Borralho Board ATMega328P;
+# Exemplo do comando `\ArduinoSketch` de um código grande
+A sintaxe de uso do comando `\ArduinoSketch` é muito simples, pois o comando usa dois parâmetros de entrada bftt `file.ino` que não devem ter a extensão .ino e Label para o código correspondente à caption do contador `Listing`.
 
-> ATMEL Recorder AVR USBasp;
-
-# Results
-
-## Assembly
-<img src="https://i.imgur.com/kX73OUW.jpg"/>
+```
+\ArduinoSketch{arquivo.ino}{título}
+```
