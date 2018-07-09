@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage{paracol}
+\usepackage{hyperref}
+\usepackage{vmargin} 
+\setpapersize{A4}
+\setmargins{2.5cm} 
+{1.5cm} 
+{16.5cm} 
+{23.42cm} 
+{10pt} 
+{1cm} 
+{0pt} 
+{1cm} 
+
+\input{arduino_code.tex}
+\input{latex_code.tex}
+
+\title{Incluindo códigos Arduino em documentos \LaTeX{}}
+\author{Gabriel Borralho}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+O arquivo \bftt{arduino\_code.tex} contém a definição do comando \cmdbs{ArduinoSketch} e o ambiente \linebreak \cmd{ArduinoSketchBox} que usam o pacote \bftt{listings} para definir o realce de sintaxe do Arduino IDE, o comando \bftt{ArduinoSketch} carrega o código de um esboço do Arduino do arquivo \bftt{.ino}, por isso é adequado para comprimentos de esboço que podem ocupar mais de uma página do documento, por outro lado, o ambiente \bftt{ArduinoSketchBox} usa o código do Arduino dentro de uma caixa colorida que pode ser ajustada dentro de uma coluna ou um pequeno espaço dentro do texto, é adequado para pequenos esboços que não ocupam mais de uma página ou para destacar partes do código.
+
+O realce de sintaxe usado no arquivo \bftt{arduino\_code.tex} pode ser visto em \url{https://www.arduino.cc/en/Reference/HomePage}.
+
+\section{Modo de exemplo de arquivo \bftt{arduino\_code.tex}}
+
+Para começar a incluir o código do Arduino em um documento \LaTeX{} simplesmente copie o arquivo \bftt{arduino\_code.tex} para o diretório raiz do seu documento e use o comando \cmdbs{input} no preâmbulo
+
+
+\begin{minted}[frame = single]{latex}
+\input{Arduino_code.tex}
+\end{minted}
+
+\section{Modo de uso do ambiente \cmd{ArduinoSketchBox}}
+
+\begin{minted}[frame = single]{latex}
+\begin{ArduinoSketchBox}{title}
+Código...
+\end{ArduinoSketchBox}
+\end{minted}
+
+\begin{paracol}{2}
+O ambiente \bftt{ArduinoSketchBox} não carrega o código do esboço do arquivo \bftt{.ino}, portanto é aconselhável usar \textit{skets} curtos ou para destacar partes do esboço geral, use um parâmetro de entrada correspondente ao título do esboço. esboço, neste exemplo, foi usado em combinação com o pacote \bftt{paracol} para incluir código Arduino em uma das colunas.
+\switchcolumn
+\begin{ArduinoSketchBox}{Ler o valor de um potenciômetro}
+int sensor = A0;
+int valSensor = 0;
+
+void setup(){
+	Serial.begin(9600);
+}
+
+void loop(){
+	valSensor = analogRead(sensor);
+    Serial.println(valSensor);
+    delay(100);
+}
+\end{ArduinoSketchBox}
+\end{paracol}
+
+\newpage
+
+\section{Exemplo do comando \cmdbs{ArduinoSketch} de um código deum leitor RFID}
+
+A sintaxe de uso do comando \cmdbs {ArduinoSketch} é muito simples, pois o comando usa dois parâmetros de entrada \ bftt {file.ino} que não devem ter a extensão \bftt{.ino} e \bftt{Label para o código} correspondente à \bftt{caption} do contador \bftt{Listing}.
+
+\begin{minted}[frame = single]{latex}
+\ArduinoSketch{archivo.ino}{Leitor RFID}
+\end{minted}
+
+Como visto neste exemplo de uso, se o código usa mais espaço que a página atual, o quadro que o contém é dividido automaticamente.
+
+\ArduinoSketch{RFID}{RFID}
+
+A seguir temos a ilustração do circuito para o código implementado:
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.2]{Circuito.png}
+	\caption{Ilustração do Circuito leitor RFID}
+\end{figure}
+\end{document}
