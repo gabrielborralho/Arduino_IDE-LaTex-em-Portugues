@@ -1,16 +1,3 @@
-%% -----------------------------------------------------------------------------
-%% 2017 por Fausto M. Lagos S. <piratax007@protonmail.ch>
-%% 
-%% Este trabajo puede ser distribuido o modificado bajo los
-%% términos y condiciones de la LaTeX Project Public License (LPPL) v1.3C, 
-%% o cualquier versión posterior. La última versión de esta licencia
-%% puede verse en:
-%% http://www.latex-project.org/lppl.txt
-%% 
-%% -----------------------------------------------------------------------------
-%% Usted es libre de usarlo, modificarlo o distribuirlo siempre que se
-%% respeten los términos de la licencia y se reconozca al autor original.
-%% -----------------------------------------------------------------------------
 \usepackage{xcolor}
 \usepackage{tcolorbox}
 \tcbuselibrary{listings, skins}
@@ -26,6 +13,7 @@
 
 \newcommand*{\FormatDigit}[1]{\ttfamily\textcolor{black}{#1}}
 %% http://tex.stackexchange.com/questions/32174/listings-package-how-can-i-format-all-numbers
+%% Correção de erros em acentos e caracteres especiais da língua portuguesa:
 \lstdefinestyle{FormattedNumber}{%
     literate={á}{{\'a}}{1}%
             {à}{{\`a}}{1}%
@@ -75,7 +63,7 @@
             {.7}{{\FormatDigit{.7}}}{2}%
             {.8}{{\FormatDigit{.8}}}{2}%
             {.9}{{\FormatDigit{.9}}}{2}%
-            %{,}{{\FormatDigit{,}}}{1}% Eliminar el comentario si quiere "," en color
+            %{,}{{\FormatDigit{,}}}{1}% Eliminar o comentário se quiser "," colorido
             {\ }{{ }}{1}%
             ,%
 }
@@ -124,14 +112,14 @@
     emph={const},
 }
 
-% Comando para incluir un sketch de Arduino, el primer parámetro es el nombre del archivo que contiene el script (sin .ino), el segundo es el etiqueta del contador Listing
+% Comando para incluir um sketch de Arduino, o primeiro parâmetro é o nome do arquivo que contem o script (sin .ino), o segundo é a legenda do contador Listing
 \newcommand{\ArduinoSketch}[2]{
 \begin{itemize}
 \item[]\lstinputlisting[caption=#2,label=#1,style=Arduino]{#1.ino}
 \end{itemize}
 }
 
-% Ambiente para incluir un sketch de Arduino escribiendo el código directamente en el documento LaTeX, tiene un parámetro de entrada que corresponde al título del sketch
+% Ambiente para incluir um sketch de Arduino escrevendo o código diretamente no documento LaTeX, tem um parâmetro de entrada que corresponde ao título do sketch
 \newtcblisting{ArduinoSketchBox}[2][colframe = arduino, enhanced, drop shadow, hbox]{
 	arc = 3pt, outer arc = 3pt,
 	listing only,
