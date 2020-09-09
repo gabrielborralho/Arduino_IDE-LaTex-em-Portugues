@@ -25,3 +25,4 @@ A sintaxe de uso do comando `\ArduinoSketch` é muito simples, pois o comando us
 ```
 \ArduinoSketch{arquivo.ino}{Legenda}
 ```
+O Resultado do projeto implementado pode ser visto em https://github.com/gabrielborralho/Arduino_IDE-LaTex-em-Portugues/raw/master/Arduino_LaTex.pdf.
